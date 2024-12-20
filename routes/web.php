@@ -1,6 +1,5 @@
 <?php
 
-use App\Livewire\Welcome;
-use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
-Route::get('/', Welcome::class);
+Volt::route('/', 'users.index');

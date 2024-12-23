@@ -22,3 +22,5 @@ if [[ $COMMIT_MESSAGE == $ISSUE_ID* ]]; then
 fi
 
 echo "$ISSUE_ID: $COMMIT_MESSAGE" >$1
+
+

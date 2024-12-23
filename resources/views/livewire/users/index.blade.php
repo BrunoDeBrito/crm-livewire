@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Collection;
 use Livewire\Volt\Component;
 use Mary\Traits\Toast;
 
-new class () extends Component {
+new class extends Component {
     use Toast;
 
     public string $search = '';
@@ -52,15 +53,15 @@ new class () extends Component {
         ])
             ->sortBy([[...array_values($this->sortBy)]])
             ->when($this->search, function (Collection $collection) {
-                return $collection->filter(fn (array $item) => str($item['name'])->contains($this->search, true));
+                return $collection->filter(fn(array $item) => str($item['name'])->contains($this->search, true));
             });
     }
 
     public function with(): array
     {
         return [
-            'users'   => $this->users(),
-            'headers' => $this->headers(),
+            'users' => $this->users(),
+            'headers' => $this->headers()
         ];
     }
 }; ?>

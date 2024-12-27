@@ -4,7 +4,6 @@ use App\Livewire\Auth\Register;
 use App\Models\User;
 use App\Notifications\WelcomeNotification;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Livewire\Livewire;
 
@@ -26,14 +25,14 @@ it('should be able to register a new user in the system', function () {
         ->assertRedirect(RouteServiceProvider::HOME);
 
     assertDatabaseHas('users', [
-        'name' => 'Joe Doe',
+        'name'  => 'Joe Doe',
         'email' => 'joe@doe.com',
     ]);
 
     assertDatabaseCount('users', 1);
 
-    expect(Auth::check())
-        ->and(Auth::user())
+    expect(auth()->check())
+        ->and(auth()->user())
         ->id->toBe(User::first()->id);
 });
 
@@ -52,15 +51,14 @@ test('validation rules', function ($f) {
     $livewire->call('submit')
         ->assertHasErrors([$f->field => $f->rule]);
 })->with([
-            'name::required' => (object) ['field' => 'name', 'value' => '', 'rule' => 'required'],
-            'name::max:255' => (object) ['field' => 'name', 'value' => str_repeat('*', 256), 'rule' => 'max'],
-            'email::required' => (object) ['field' => 'email', 'value' => '', 'rule' => 'required'],
-            'email::email' => (object) ['field' => 'email', 'value' => 'not-an-email', 'rule' => 'email'],
-            'email::max:255' => (object) ['field' => 'email', 'value' => str_repeat('*' . '@doe.com', 256), 'rule' => 'max'],
-            'email::confirmed' => (object) ['field' => 'email', 'value' => 'joe@doe.com', 'rule' => 'confirmed'],
-            //'email::unique'      => (object)['field' => 'email', 'value' => 'joe@doe.com', 'rule' => 'unique', 'aField' => 'email_confirmation', 'aValue' => 'joe@doe.com'],
-            'password::required' => (object) ['field' => 'password', 'value' => '', 'rule' => 'required'],
-        ]);
+    'name::required'     => (object)['field' => 'name', 'value' => '', 'rule' => 'required'],
+    'name::max:255'      => (object)['field' => 'name', 'value' => str_repeat('*', 256), 'rule' => 'max'],
+    'email::required'    => (object)['field' => 'email', 'value' => '', 'rule' => 'required'],
+    'email::email'       => (object)['field' => 'email', 'value' => 'not-an-email', 'rule' => 'email'],
+    'email::max:255'     => (object)['field' => 'email', 'value' => str_repeat('*' . '@doe.com', 256), 'rule' => 'max'],
+    'email::confirmed'   => (object)['field' => 'email', 'value' => 'joe@doe.com', 'rule' => 'confirmed'],
+    'password::required' => (object)['field' => 'password', 'value' => '', 'rule' => 'required'],
+]);
 
 it('should send a notification welcoming the new user', function () {
     Notification::fake();

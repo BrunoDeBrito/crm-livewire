@@ -21,7 +21,7 @@ class Login extends Component
 
     public function tryToLogin(): void
     {
-        if($this->ensureIsNotRateLimiting()) {
+        if ($this->ensureIsNotRateLimiting()) {
             return;
         }
 

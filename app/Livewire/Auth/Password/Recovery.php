@@ -2,8 +2,6 @@
 
 namespace App\Livewire\Auth\Password;
 
-use App\Models\User;
-use App\Notifications\PasswordRecoveryNotification;
 use Illuminate\Support\Facades\Password;
 use Livewire\Attributes\{Layout, Rule};
 use Livewire\Component;

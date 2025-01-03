@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Auth\{Login, Logout, Register, Password};
+use App\Livewire\Auth\{Login, Logout, Password, Register};
 use App\Livewire\Welcome;
 use Illuminate\Support\Facades\{Route};
 

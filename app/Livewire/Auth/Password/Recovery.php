@@ -4,8 +4,7 @@ namespace App\Livewire\Auth\Password;
 
 use App\Models\User;
 use App\Notifications\PasswordRecoveryNotification;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\{Layout, Rule};
 use Livewire\Component;
 
 class Recovery extends Component

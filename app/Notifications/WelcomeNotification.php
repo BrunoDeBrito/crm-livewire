@@ -23,8 +23,8 @@ class WelcomeNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage())
-        ->line('Welcome to our CRM! Happy to see you here.')
-        ->line('Thank you for using our application!');
+                    ->line('Welcome to our CRM! Happy to see you here.')
+                    ->line('Thank you for using our application!');
     }
 
     public function toArray(object $notifiable): array

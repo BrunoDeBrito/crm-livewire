@@ -6,7 +6,6 @@ use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\{DB, Hash, Password};
-
 use Illuminate\Support\Str;
 use Livewire\Attributes\{Computed, Layout, Rule};
 use Livewire\Component;
@@ -31,7 +30,9 @@ class Reset extends Component
         $this->email = request('email', $email);
 
         if ($this->tokenNotValid()) {
+
             session()->flash('status', 'Token Invalid');
+
             $this->redirectRoute('login');
         }
     }
@@ -47,12 +48,7 @@ class Reset extends Component
         $this->validate();
 
         $status = Password::reset(
-            $this->only(
-                'email',
-                'password',
-                'password_confirmation',
-                'token'
-            ),
+            $this->only('email', 'password', 'password_confirmation', 'token'),
             function (User $user, $password) {
                 $user->password       = $password;
                 $user->remember_token = Str::random(60);

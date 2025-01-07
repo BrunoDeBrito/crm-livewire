@@ -9,17 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "doctrine/dbal": "^3.6",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "livewire/livewire": "^3.5",
-        "livewire/volt": "^1.6",
-        "robsontenorio/mary": "^1.41"
+        "livewire/livewire": "^3.0",
+        "robsontenorio/mary": "^0.38.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
-        "laradumps/laradumps": "^3.0",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
@@ -27,7 +26,8 @@
         "nunomaduro/larastan": "^2.6",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "spatie/laravel-ray": "^1.33"
     },
     "autoload": {
         "psr-4": {
@@ -36,7 +36,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Support/HelperFunctions.php"
+            "app\\Support\\HelperFunctions.php"
         ]
     },
     "autoload-dev": {

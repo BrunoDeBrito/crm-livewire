@@ -14,7 +14,7 @@ class Login extends Component
 
     public ?string $password = null;
 
-    #[Layout("components.layouts.guest")]
+    #[Layout('components.layouts.guest')]
     public function render(): View
     {
         return view('livewire.auth.login');
@@ -22,7 +22,7 @@ class Login extends Component
 
     public function tryToLogin(): void
     {
-        if ($this->ensureIsNotRateLimiting()) {
+        if($this->ensureIsNotRateLimiting()) {
             return;
         }
 

@@ -2,16 +2,13 @@
 
 namespace App\Livewire;
 
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class Welcome extends Component
 {
-    public function render()
+    public function render(): View
     {
-        return <<<'HTML'
-        <div>
-            Hello :)
-        </div>
-        HTML;
+        return view('livewire.welcome');
     }
 }

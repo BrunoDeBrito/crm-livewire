@@ -8,7 +8,7 @@ function obfuscate_email(?string $email = null): string
 
     $split = explode('@', $email);
 
-    if (sizeof($split) != 2) {
+    if(sizeof($split) != 2) {
         return '';
     }
 

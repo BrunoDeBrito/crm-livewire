@@ -1,3 +1,3 @@
-<div class="text-red-400 bg-red-100 rounded m-20 p-20">
-    Welcome!!
+<div class="p-2 h-dvh">
+    <livewire:opportunities.board/>
 </div>

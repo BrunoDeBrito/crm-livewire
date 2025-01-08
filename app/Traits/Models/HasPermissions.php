@@ -33,7 +33,10 @@ trait HasPermissions
         $pKey = $key instanceof Can ? $key->value : $key;
 
         /** @var Collection $permissions */
-        $permissions = Cache::get($this->getPermissionCacheKey(), $this->permissions);
+        $permissions = Cache::get(
+            $this->getPermissionCacheKey(),
+            $this->permissions
+        );
 
         return $permissions
             ->where('key', '=', $pKey)

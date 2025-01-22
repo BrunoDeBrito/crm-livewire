@@ -1,6 +1,5 @@
 <?php
 
-use App\Enum\Can;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -184,7 +183,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        "Can" => Can::class
     ])->toArray(),
 
 ];

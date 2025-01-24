@@ -98,7 +98,10 @@ class Index extends Component
     public function filterPermissions(?string $value = null): void
     {
         $this->permissionsToSearch = Permission::query()
-            ->when($value, fn (Builder $q) => $q->where('key', 'like', "%$value%"))
+            ->when(
+                $value,
+                fn (Builder $q) => $q->where('key', 'like', "%$value%")
+            )
             ->orderBy('key')
             ->get();
     }

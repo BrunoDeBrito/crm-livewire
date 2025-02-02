@@ -1,6 +1,7 @@
 <div>
     <x-header title="Users" separator/>
 
+
     <div class="mb-4 flex space-x-4">
         <div class="w-1/3">
             <x-input
@@ -23,14 +24,10 @@
             wire:model.live="search_trash"
             class="checkbox-primary"
             right tight/>
+
         <x-select
             wire:model.live="perPage"
-            :options="[
-                ['id'=>5, 'name'=>5],
-                ['id'=>15,'name'=>15],
-                ['id'=>25,'name'=>25],
-                ['id'=>50,'name'=>50]
-            ]"
+            :options="[['id'=>5,'name'=>5], ['id'=>15,'name'=>15], ['id'=>25,'name'=>25], ['id'=>50,'name'=>50]]"
             label="Records Per Page"
         />
     </div>
@@ -57,7 +54,15 @@
         @scope('actions', $user)
         @can(\App\Enum\Can::BE_AN_ADMIN->value)
             @unless($user->trashed())
-                <x-button icon="o-trash" wire:click="delete({{ $user->id }})" spinner class="btn-sm"/>
+                @unless($user->is(auth()->user()))
+                    <x-button
+                        id="delete-btn-{{ $user->id }}"
+                        wire:key="delete-btn-{{ $user->id }}"
+                        icon="o-trash"
+                        wire:click="destroy('{{ $user->id }}')"
+                        spinner class="btn-sm"
+                    />
+                @endif
             @else
                 <x-button icon="o-arrow-path-rounded-square" wire:click="restore({{ $user->id }})" spinner
                           class="btn-sm btn-success btn-ghost"/>
@@ -67,4 +72,6 @@
     </x-table>
 
     {{ $this->users->links(data: ['scrollTo' => false]) }}
+
+    <livewire:admin.users.delete/>
 </div>

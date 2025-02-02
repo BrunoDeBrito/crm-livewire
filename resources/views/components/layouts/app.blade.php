@@ -8,7 +8,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen font-sans antialiased">
+<x-toast/>
 <x-main full-width>
+
+
     <x-slot:sidebar drawer="main-drawer" collapsible class="pt-3 bg-sky-800 text-white">
 
         <!-- Hidden when collapsed -->
@@ -26,7 +29,7 @@
                              class="!-mx-2 mt-2 mb-5 border-y border-y-sky-900">
                     <x-slot:actions>
                         <div class="tooltip tooltip-left" data-tip="logoff">
-                            <livewire:auth.logout/>
+                            <livewire:auth.logout c/>
                         </div>
                     </x-slot:actions>
                 </x-list-item>

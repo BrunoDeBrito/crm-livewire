@@ -19,6 +19,9 @@ return new class () extends Migration {
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
+            $table->datetime('restored_at')->nullable();
+            $table->foreignIdFor(\App\Models\User::class, 'restored_by')->nullable();
+            $table->foreignIdFor(\App\Models\User::class, 'deleted_by')->nullable();
         });
     }
 
